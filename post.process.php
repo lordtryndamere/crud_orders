@@ -1,30 +1,30 @@
 <?php 
   include "./includes/class-autoload.inc.php";
 
-  $posts = new Posts();
+  $order = new Order();
   
   if(isset($_POST['submit'])) {
-    $title = $_POST['post-title'];
-    $body = $_POST['post-content'];
-    $author = $_POST['post-author'];
+    $name = $_POST['order-name'];
+    $description = $_POST['order-description'];
+    $receive= $_POST['order-receive'];
   
-    $posts->addPost($title, $body, $author);
+    $order->addOrder($name, $description, $receive);
   
-    header("location: {$_SERVER['HTTP_ORIGIN']}/PHP-OOP/crud_pdo_oop/index.php?status=added");
+    header("location: {$_SERVER['HTTP_ORIGIN']}/crud-orders/index.php?status=added");
   
   } else if($_GET['send'] === 'del') {
     $id = $_GET['id'];
-    $posts->delPost($id);
+    $order->delOrder($id);
 
-    header("location: {$_SERVER['HTTP_ORIGIN']}/PHP-OOP/crud_pdo_oop/index.php?status=deleted");
+    header("location: {$_SERVER['HTTP_ORIGIN']}/crud-orders/index.php?status=deleted");
   } else if($_GET['send'] === 'update') {
     $id = $_GET['id'];
 
-    $title = $_POST['post-title'];
-    $body = $_POST['post-content'];
-    $author = $_POST['post-author'];
+    $name = $_POST['order-name'];
+    $description = $_POST['order-content'];
+    $receive = $_POST['order-receive'];
 
-    $posts->updatePost($id, $title, $body, $author);
+    $order->updateOrder($id, $name, $description, $receive);
 
-    header("location: {$_SERVER['HTTP_ORIGIN']}/PHP-OOP/crud_pdo_oop/index.php?status=updated");
+    header("location: {$_SERVER['HTTP_ORIGIN']}/crud-orders/index.php?status=updated");
   }

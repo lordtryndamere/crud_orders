@@ -2,9 +2,9 @@
 
 class Dbh {
   private $host = "localhost";
-  private $user = "can";
-  private $pwd = "admin";
-  private $dbName = "oopblog";
+  private $user = "root";
+  private $pwd = "";
+  private $dbName = "drugs_online";
 
   public function connect() {
     $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;
